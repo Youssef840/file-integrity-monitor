@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "file-integrity-monitor"
+dynamic = ["version"]
+description = "Real-time File Integrity Monitor (FIM) using SHA-256 baselines, SQLite and watchdog."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Youssef Hussein" }]
+keywords = ["security", "fim", "file-integrity", "hashing", "blue-team", "watchdog", "sqlite"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Security",
+    "Topic :: System :: Monitoring",
+    "Environment :: Console",
+]
+dependencies = ["watchdog>=4.0,<7", "colorama>=0.4.6"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+fim = "fim.cli:main"
+
+[tool.setuptools]
+packages = ["fim"]
+
+[tool.setuptools.dynamic]
+version = { attr = "fim.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["integration: uses the real OS file-system watcher (slower)"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["UP006", "UP007", "UP035", "UP045"]

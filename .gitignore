@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# FIM runtime data (never commit your baselines or logs)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.log
+demo_site/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
