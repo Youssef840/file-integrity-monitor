@@ -35,6 +35,7 @@ version = { attr = "fim.__version__" }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 addopts = "-ra"
 markers = ["integration: uses the real OS file-system watcher (slower)"]
 
